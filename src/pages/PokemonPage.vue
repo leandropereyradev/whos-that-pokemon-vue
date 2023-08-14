@@ -1,5 +1,5 @@
 <template>
-  <h1>Who's That Pokemon</h1>
+  <h1>Who's That Pokemon??</h1>
 
   <PokemonPicture />
 
