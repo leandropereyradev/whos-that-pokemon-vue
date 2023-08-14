@@ -36,7 +36,7 @@ img {
   height: 100px;
   position: absolute;
   width: 100vw;
-  margin-left: -53vw;
+  margin-left: -51vw;
   margin-top: 4.5rem;
   user-select: none;
   -moz-user-select: none;

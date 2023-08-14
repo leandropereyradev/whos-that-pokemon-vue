@@ -119,11 +119,11 @@ h2 {
 }
 
 .pokedex {
-  background-image: url('https://github.com/manualdodev/pokedex/blob/main/images/pokedex.png?raw=true');
+  background-image: url('@/assets/images/pokedex.png');
   background-position: center;
   background-repeat: no-repeat;
   height: 90%;
-  width: 90%;
+  width: 425px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,7 +135,7 @@ h2 {
 .btnReset {
   position: absolute;
   top: 10rem;
-  right: 30%;
+  right: 5rem;
   width: 100px;
   height: 35px;
   background: rgb(123, 104, 238);
