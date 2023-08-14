@@ -33,10 +33,11 @@ export default {
 }
 
 img {
-  height: 200px;
+  height: 100px;
   position: absolute;
   width: 100vw;
-  margin-left: -50vw;
+  margin-left: -53vw;
+  margin-top: 4.5rem;
   user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
