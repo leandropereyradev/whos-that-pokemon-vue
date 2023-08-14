@@ -2,9 +2,10 @@
   <div class="container">
     <h1>Who's That Pokemon??</h1>
 
-    <h1 v-if="!pokemon">Loading...</h1>
+    <h1 v-if="!pokemon" class="loading">Loading...</h1>
 
     <div v-else class="pokedex">
+      <button class="btnReset btn animation" @click="reset">Reset</button>
       <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
       <PokemonOptions :pokemons="pokemonsArr" @selected-pokemon="checkAnswer($event)" :isDisabled="isDisabled" />
     </div>
@@ -59,6 +60,14 @@ export default {
         this.message = `Oops!!! This is ${capitalized}`
       }
     },
+    reset() {
+      this.showPokemon = false
+      this.showAnswer = false
+      this.pokemonsArr = []
+      this.pokemon = null
+      this.isDisabled = false
+      this.mixPokemonsArray()
+    }
   },
   mounted() {
     this.mixPokemonsArray()
@@ -104,6 +113,11 @@ h2 {
   align-items: center;
 }
 
+.loading {
+  position: absolute;
+  top: 50%;
+}
+
 .pokedex {
   background-image: url('https://github.com/manualdodev/pokedex/blob/main/images/pokedex.png?raw=true');
   background-position: center;
@@ -115,5 +129,15 @@ h2 {
   justify-content: center;
   align-items: center;
   padding-top: 5.5rem;
+  position: relative;
+}
+
+.btnReset {
+  position: absolute;
+  top: 10rem;
+  right: 30%;
+  width: 100px;
+  height: 35px;
+  background: rgb(123, 104, 238);
 }
 </style>
