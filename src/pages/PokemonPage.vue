@@ -6,7 +6,7 @@
 
     <div v-else class="pokedex">
       <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
-      <PokemonOptions :pokemons="pokemonsArr" @selected-pokemon="checkAnswer($event)" />
+      <PokemonOptions :pokemons="pokemonsArr" @selected-pokemon="checkAnswer($event)" :isDisabled="isDisabled" />
     </div>
 
     <template v-if="showAnswer">
@@ -34,7 +34,8 @@ export default {
       pokemon: null,
       showPokemon: false,
       showAnswer: false,
-      message: ""
+      message: "",
+      isDisabled: false,
     }
   },
   methods: {
@@ -48,13 +49,16 @@ export default {
     checkAnswer(selectedPokemonId) {
       this.showPokemon = true;
       this.showAnswer = true
+      this.isDisabled = true
+
+      const capitalized = this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)
 
       if (this.pokemon.id === selectedPokemonId) {
-        this.message = `Great!!! It's ${this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)}`
+        this.message = `Great!!! It's ${capitalized}`
       } else {
-        this.message = `Oops!!! This is ${this.pokemon.name.charAt(0).toUpperCase() + this.pokemon.name.slice(1)}`
+        this.message = `Oops!!! This is ${capitalized}`
       }
-    }
+    },
   },
   mounted() {
     this.mixPokemonsArray()

@@ -1,8 +1,9 @@
 <template>
   <div class="options-container">
 
-    <button class="btn" v-for="pokemon in pokemons" :key="pokemon.id" @click="$emit('selected-pokemon', pokemon.id)">{{
-      capitalize(pokemon.name) }}
+    <button v-for="pokemon in pokemons" :key="pokemon.id" @click="$emit('selected-pokemon', pokemon.id)"
+      :class="!isDisabled ? 'btn animation isActive' : 'btn isInactive'" :disabled="isDisabled">{{
+        capitalize(pokemon.name) }}
     </button>
 
   </div>
@@ -14,19 +15,21 @@ export default {
   props: {
     pokemons: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
+    isDisabled: false,
   },
   methods: {
     capitalize(name) {
       return name.charAt(0).toUpperCase() + name.slice(1)
-    }
-  }
+    },
+  },
+
 }
 </script>
 
 <style scoped>
-button {
+.btn {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -36,21 +39,27 @@ button {
   text-decoration: none;
   width: 250px;
   letter-spacing: 2px;
-}
-
-button.btn {
   font-weight: 600;
   color: aliceblue;
   text-transform: uppercase;
   padding: 0.25em 1.5em;
-  background: rgb(123, 104, 238);
+
   border: 2px solid #b18597;
   border-radius: 0.75em;
   transform-style: preserve-3d;
   transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-button.btn::before {
+.isActive {
+  background: rgb(123, 104, 238);
+}
+
+.isInactive {
+  background-color: rgb(83, 80, 99);
+  color: rgb(128, 126, 143);
+}
+
+.animation::before {
   position: absolute;
   content: '';
   width: 100%;
@@ -66,23 +75,23 @@ button.btn::before {
   transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-button.btn:hover {
+.animation:hover {
   background: #ffe9e9;
   transform: translate(0, 0.25em);
   color: rgb(123, 104, 238);
 }
 
-button.btn:hover::before {
+.animation:hover::before {
   box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 rgb(176, 224, 230);
   transform: translate3d(0, 0.5em, -1em);
 }
 
-button.btn:active {
+.animation:active {
   background: #ffe9e9;
   transform: translate(0em, 0.75em);
 }
 
-button.btn:active::before {
+.animation:active::before {
   box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
   transform: translate3d(0, 0, -1em);
 }
