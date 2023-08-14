@@ -3,7 +3,7 @@
 
   <PokemonPicture :pokemonId="7" :showPokemon="true" />
 
-  <PokemonOptions />
+  <PokemonOptions :pokemons="pokemonsArr" />
 </template>
 
 <script>
@@ -17,6 +17,19 @@ export default {
   components: {
     PokemonPicture,
     PokemonOptions
+  },
+  data() {
+    return {
+      pokemonsArr: []
+    }
+  },
+  methods: {
+    async mixPokemonsArray() {
+      this.pokemonsArr = await getPokemonsOptions()
+    }
+  },
+  mounted() {
+    this.mixPokemonsArray()
   }
 }
 </script>

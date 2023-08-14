@@ -1,17 +1,26 @@
 <template>
   <div class="options-container">
     <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
+      <li v-for="pokemon in pokemons" :key="pokemon.id">{{ capitalize(pokemon.name) }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Pokemon Options'
+  name: 'Pokemon Options',
+  props: {
+    pokemons: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    capitalize(name) {
+      return name.charAt(0).toUpperCase() + name.slice(1)
+    }
+  }
 }
 </script>
 
