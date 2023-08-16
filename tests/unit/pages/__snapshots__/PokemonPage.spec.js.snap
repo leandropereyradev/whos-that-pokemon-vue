@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonPage component Should match this snapshot when it loads the Pokemons 1`] = `
+<div class="container">
+  <h1>Who's That Pokemon??</h1>
+  <div class="pokedex"><button class="btnReset btn animation">Reset</button>
+    <pokemon-picture-stub pokemonid="1" showpokemon="false"></pokemon-picture-stub>
+    <pokemon-options-stub pokemons="[object Object],[object Object],[object Object],[object Object]" isdisabled="false"></pokemon-options-stub>
+  </div>
+  <!--v-if-->
+</div>
+`;
